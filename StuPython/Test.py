@@ -32,4 +32,48 @@ else:
 #if语句执行从上往下判断,如果在某个判断上是True,把该判断对应的语句执行后，就忽略剩下的elif和else
 
 #int()转换为int类型
-#print(Ttuple[-1])
+
+
+'''
+#for 循环
+names=['Michael','Bob','Tracy']
+for name in  names:
+    print(name)
+
+Lnum=list(range(5))#生成从0开始小于5的整数
+#while循环
+sum=0
+n=99
+while n>0:
+    sum=sum+n
+    n=n-2
+print(sum)
+'''
+
+#Python内置了字典：dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度
+Dnames={'Michael':95,'Bob':75,'Tracy':85}
+Dnames['Adam']=67#添加一个新的key-value
+Dnames['Adam']=11#一个key只能对应一个value，多次对一个key放入value，后面的值会替换之前的value
+#通过in判断key是否存在
+Dt= 'Adam' in Dnames
+#1.判断Adam是否存在 输出True
+#通过dict提供的get方法，如果key不存在返回None，存在返回value  返回None的时候Python的交互式命令行不显示结果
+Dt2=Dnames.get('Michael')#返回95 Dt2=Dnames.get('Michael1')返回None
+#使用pop(key)方法删除key
+Dnames.pop('Adam') #删除Adam
+#dict内部存放的顺序和key放入的顺序是没有关系的
+#set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key
+Sset=set([1,2,3])
+#传入的参数[1, 2, 3]是一个list，而显示的{1, 2, 3}只是告诉你这个set内部有1，2，3这3个元素，显示的顺序也不表示set是有序的
+#Sset=set([1, 1, 2, 2, 3, 3])#输出{1, 2, 3}重复数据被过滤掉了
+#通过add(key)方法添加元素到set中
+Sset.add(4)
+#通过remove(key)方法删除元素
+Sset.remove(4)
+#set可以看成数学意义上的无序和无重复元素的集合，因此，两个set可以做数学意义上的交集、并集等操作
+Sset1=set([1, 2, 3])
+Sset2=set([2, 3, 4])
+JL=Sset1&Sset2#交集
+BJ=Sset1|Sset2#并集
+
+print(BJ)
