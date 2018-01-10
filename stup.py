@@ -2,15 +2,20 @@
 import urllib.request
 from lxml import etree
 from readUrl import ReadUrlHelp
+import modelhelp
 
 url="http://www.zimuzu.tv/resourcelist"
 help=ReadUrlHelp(url)
-help.get_urlData()
+introductions=help.get_urlData()
 num=help.get_PageNum()
 urlt=help.get_urlByPageNum(1)
 print(num)
 crNum=1
-#1 168 286 341
+for introduction in introductions:
+    print(introduction.name)
+    print(introduction.countries)
+    print(introduction.Iid)
+'''
 while crNum<num:
     try:
         read=ReadUrlHelp(help.get_urlByPageNum(crNum))
@@ -20,3 +25,4 @@ while crNum<num:
         print(e)
     finally:
         crNum=crNum+1
+'''
