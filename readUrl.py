@@ -80,21 +80,16 @@ class ReadUrlHelp(object):
             )
         driver = webdriver.PhantomJS(executable_path=r'phantomjs.exe',desired_capabilities=dcap)
         driver.get(url)
-        #html=driver.find_element_by_xpath("//h3/a")
-        #html=driver.find_element_by_id("resource-box")
-        #stt=str(driver.page_source)
-        #urlt=html.get_attribute("hreff")
-        #print(stt)
-        #print(driver.find_element_by_xpath("//h3/a/strong/text()"))
-        #cont=etree.tostring(stt,pretty_print=True)
-        driver.save_screenshot("test.html")
-        #lxml_html=etree.HTML(stt)
-        #url=lxml_html.xpath("//h3/a/strong")
+        stt=str(driver.page_source)
+        lxml_html=etree.HTML(stt)
+        url=lxml_html.xpath("//h3/a/@href")
         driver.quit()
-        driver.close()
-        print(url)
-        return ""
-    
+        #driver.close()
+        #print(url)
+        if len(url)>=1:
+            return url[0]
+        else:
+            return ""
     def parse_from_unicode(unicode_str):
         utf8_parser = lxml.etree.HTMLParser(encoding='utf-8')
         s = unicode_str.encode('utf-8')
